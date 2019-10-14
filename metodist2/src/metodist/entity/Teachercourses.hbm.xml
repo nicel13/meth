@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14.10.2019 8:27:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metodist.entity.Teachercourses" table="teachercourses" catalog="metodist" optimistic-lock="version">
+        <id name="idCourses" type="int">
+            <column name="idCourses" />
+            <generator class="foreign">
+                <param name="property">courses</param>
+            </generator>
+        </id>
+        <one-to-one name="courses" class="metodist.entity.Courses" constrained="true"></one-to-one>
+        <many-to-one name="teacher" class="metodist.entity.Teacher" fetch="select">
+            <column name="idTeacher" />
+        </many-to-one>
+        <property name="nameOfCourses" type="string">
+            <column name="nameOfCourses" length="45" />
+        </property>
+        <property name="fioTeacher" type="string">
+            <column name="fioTeacher" length="150" />
+        </property>
+        <property name="dateOfBegin" type="date">
+            <column name="dateOfBegin" length="10" />
+        </property>
+        <property name="dateOfEnd" type="date">
+            <column name="dateOfEnd" length="10" />
+        </property>
+        <property name="spentTime" type="string">
+            <column name="spentTime" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

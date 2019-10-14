@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14.10.2019 8:27:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metodist.entity.Event" table="event" catalog="metodist" optimistic-lock="version">
+        <id name="idEvent" type="java.lang.Integer">
+            <column name="idEvent" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="title" length="500" />
+        </property>
+        <set name="documents" table="document" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEvent" />
+            </key>
+            <one-to-many class="metodist.entity.Document" />
+        </set>
+    </class>
+</hibernate-mapping>
