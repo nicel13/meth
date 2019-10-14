@@ -26,6 +26,7 @@ public class mMain extends javax.swing.JFrame {
     public mMain() {
         initComponents();
         runQueryONMain();
+        
     }
     
     
