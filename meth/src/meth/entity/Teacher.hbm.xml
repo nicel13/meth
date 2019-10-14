@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14.10.2019 9:59:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="meth.entity.Teacher" table="teacher" catalog="metodist" optimistic-lock="version">
+        <id name="idTeacher" type="java.lang.Integer">
+            <column name="idTeacher" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="courses" class="meth.entity.Courses" fetch="select">
+            <column name="idCourses" />
+        </many-to-one>
+        <property name="fioTeacher" type="string">
+            <column name="fioTeacher" length="150" />
+        </property>
+        <property name="dateOfAttestation" type="date">
+            <column name="dateOfAttestation" length="10" />
+        </property>
+        <property name="dateBeginCourses" type="date">
+            <column name="dateBeginCourses" length="10" />
+        </property>
+        <property name="dateEndCourses" type="date">
+            <column name="dateEndCourses" length="10" />
+        </property>
+        <property name="category" type="string">
+            <column name="category" length="150" />
+        </property>
+        <property name="nameOfCourses" type="string">
+            <column name="nameOfCourses" length="300" />
+        </property>
+        <set name="documents" table="document" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idTeacher" />
+            </key>
+            <one-to-many class="meth.entity.Document" />
+        </set>
+        <set name="teachercourseses" table="teachercourses" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idTeacher" />
+            </key>
+            <one-to-many class="meth.entity.Teachercourses" />
+        </set>
+    </class>
+</hibernate-mapping>
