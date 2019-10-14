@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14.10.2019 9:59:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="meth.entity.Document" table="document" catalog="metodist" optimistic-lock="version">
+        <id name="idDocument" type="java.lang.Integer">
+            <column name="idDocument" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="event" class="meth.entity.Event" fetch="select">
+            <column name="idEvent" />
+        </many-to-one>
+        <many-to-one name="teacher" class="meth.entity.Teacher" fetch="select">
+            <column name="idTeacher" />
+        </many-to-one>
+        <property name="titleOfDocument" type="string">
+            <column name="titleOfDocument" length="300" />
+        </property>
+        <property name="path" type="string">
+            <column name="path" length="300" />
+        </property>
+        <property name="dateDownload" type="date">
+            <column name="dateDownload" length="10" />
+        </property>
+        <property name="studentInfo" type="string">
+            <column name="studentInfo" length="150" />
+        </property>
+        <property name="groupStudents" type="string">
+            <column name="groupStudents" length="45" />
+        </property>
+        <property name="lieu" type="string">
+            <column name="lieu" length="50" />
+        </property>
+        <property name="titleOfFile" type="string">
+            <column name="titleOfFile" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>
